@@ -1,0 +1,10 @@
+# import Permission from '../Permission/schema.graphql'
+
+type Role {
+  id: ID!
+  name: String!
+  description: String!
+  permissions: [Permission!]!
+  createdAt: String!
+  updatedAt: String!
+}

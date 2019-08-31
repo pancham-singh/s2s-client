@@ -1,0 +1,22 @@
+# import User from '../User/schema.graphql'
+# import Batch from '../Batch/schema.graphql'
+# import TrainingCenter from '../TrainingCenter/schema.graphql'
+
+enum InvitedAs {
+  student
+  teacher
+  centerIncharge
+}
+
+type Invitation {
+  id: ID!
+  token: String!
+  invitedAs: InvitedAs!
+  invitedEmail: String!
+  invitedBy: User!
+  validTill: String
+  batch: Batch
+  trainingCenter: TrainingCenter!
+  updatedAt: String
+  deletedAt: String
+}

@@ -1,0 +1,43 @@
+# import Question, QuestionType from '../../models/Question/schema.graphql'
+# import AttachmentType from '../../models/Attachment/schema.graphql'
+
+type Query {
+  questions(topic: ID!, limit: Int, skip: Int): [Question]
+  question(id: ID): Question
+}
+
+input AttachmentInput {
+  id: ID
+  url: String!
+  type: AttachmentType!
+}
+
+input AnswerInput {
+  id: ID
+  body: String
+  isCorrect: Boolean
+  attachments: [AttachmentInput]
+}
+
+type Mutation {
+  createQuestion(
+    body: String!
+    answers: [AnswerInput]
+    attachments: [AttachmentInput]
+    topic: ID!
+    points: Int!
+    type: QuestionType
+  ): Question
+
+  updateQuestion(
+    id: ID!
+    body: String
+    topic: ID
+    points: Int
+    type: QuestionType
+    answers: [AnswerInput]
+    attachments: [AttachmentInput]
+  ): Question
+
+  deleteQuestion(id: ID!): Question
+}

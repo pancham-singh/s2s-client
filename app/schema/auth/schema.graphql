@@ -1,0 +1,18 @@
+# import Permission from '../../models/Permission/schema.graphql'
+# import User from '../../models/User/schema.graphql'
+# import Role from '../../models/Role/schema.graphql'
+
+type AuthResponse {
+  token: String!
+  user: User!
+}
+
+type Query {
+  currentUser: User
+}
+
+type Mutation {
+  createUser(email: String!, password: String!, name: String, role: String!): AuthResponse!
+  login(email: String!, password: String!): AuthResponse!
+  registerWithInvitationToken(token: String!, password: String!, name: String): AuthResponse!
+}

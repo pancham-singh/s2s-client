@@ -1,0 +1,9 @@
+# import User from '../User/schema.graphql'
+
+type TrainingCenter {
+  id: ID!
+  name: String!
+  address: String!
+  pia: User!
+  incharges: [User]
+}

@@ -1,0 +1,32 @@
+version: '3.3'
+services:
+  web:
+    build:
+      context: .
+    command: npm run start:dev
+    volumes:
+      - ../uploads:/usr/app/uploads
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      DB_HOST: db
+      DB_NAME: skill2skills
+      DB_USER: skill2skills
+      DB_PASSWORD: 'skill2skills@user'
+      REDIS_HOST: redis
+  db:
+    volumes:
+      - ../db/mysql:/var/lib/mysql
+    image: mariadb:10.3.5
+    environment:
+      MYSQL_ROOT_PASSWORD: 'skill2skills@admin'
+      MYSQL_DATABASE: skill2skills
+      MYSQL_USER: skill2skills
+      MYSQL_PASSWORD: 'skill2skills@user'
+  redis:
+    image: redis:alpine

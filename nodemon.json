@@ -1,0 +1,6 @@
+{
+  "watch": ["app"],
+  "ext": "ts graphql",
+  "ignore": ["app/**/*.spec.ts", "**/flycheck_*"],
+  "exec": "ts-node app"
+}

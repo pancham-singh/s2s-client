@@ -1,0 +1,14 @@
+# import Module from '../Module/schema.graphql'
+
+type Course {
+  id: ID!
+  name: String!
+  description: String!
+  icon: String
+  coverImage: String
+  modules: [Module]
+  category: String!
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+}

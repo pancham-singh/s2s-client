@@ -1,0 +1,18 @@
+# import Answer from '../Answer/schema.graphql'
+# import Topic from '../Topic/schema.graphql'
+# import Attachment from '../Attachment/schema.graphql'
+
+enum QuestionType {
+  theory
+  practical
+}
+
+type Question {
+  id: ID!
+  body: String!
+  answers: [Answer!]
+  attachments: [Attachment!]
+  topic: Topic!
+  points: Int!
+  type: QuestionType
+}

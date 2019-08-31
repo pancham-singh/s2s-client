@@ -1,0 +1,10 @@
+# import Question from '../Question/schema.graphql'
+# import Assessment from '../Assessment/schema.graphql'
+# import User from '../User/schema.graphql'
+# import AssessmentAnswer from '../AssessmentAnswer/schema.graphql'
+type AssessmentResult {
+  id: ID!
+  assessment: Assessment!
+  user: User!
+  answer: AssessmentAnswer!
+}

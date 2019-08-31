@@ -1,0 +1,23 @@
+# import AssessmentResult from '../../models/AssessmentResult/schema.graphql'
+
+input AssessmentAnswerInput {
+  id: ID!
+  isCorrect: Boolean!
+  body: String
+  question:ID!
+}
+
+type Query {
+  assessmentResults(limit: Int, skip: Int): [AssessmentResult]
+  assessmentResult(id: ID): AssessmentResult
+}
+
+type Mutation {
+  createAssessmentResult(
+    assessment: ID!
+    answer:AssessmentAnswerInput
+  ): AssessmentResult!
+
+
+  deleteAssessmentResult(id: ID!): AssessmentResult
+}

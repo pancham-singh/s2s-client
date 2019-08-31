@@ -1,0 +1,15 @@
+# import User from '../User/schema.graphql'
+# import Question from '../Question/schema.graphql'
+# import Batch from '../Batch/schema.graphql'
+
+type Assessment {
+  id: ID!
+  name: String
+  startDate: String!
+  endDate: String!
+  durationMinutes: Int!
+  batch: Batch!
+  createdBy: User!
+  questions: [Question]
+  topics: [Topic]
+}

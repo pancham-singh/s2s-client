@@ -1,0 +1,27 @@
+# import Course from '../../models/Course/schema.graphql'
+
+type Query {
+  courses(limit: Int, skip: Int): [Course]
+  course(id: ID): Course
+}
+
+type Mutation {
+  createCourse(
+    name: String!
+    description: String!
+    category: String!
+    icon: String
+    coverImage: String
+  ): Course
+
+  updateCourse(
+    id: ID!
+    category: String
+    name: String
+    description: String
+    icon: String
+    coverImage: String
+  ): Course
+
+  deleteCourse(id: ID!): Course
+}

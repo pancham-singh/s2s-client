@@ -1,0 +1,8 @@
+# import User from '../../models/User/schema.graphql'
+
+type Query {
+  users(limit: Int, skip: Int): [User]
+  user(id: ID): User
+}
+
+# No mutations here. All user related mutations are done in auth module

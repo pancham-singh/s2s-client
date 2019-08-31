@@ -1,0 +1,18 @@
+{
+  "extends": ["tslint-config-airbnb"],
+  "rules": {
+    "trailing-comma": [true, {
+      "singleline": "never",
+      "multiline": "never",
+      "esSpecCompliant": true
+    }],
+    "no-unused-variable": true,
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-last"
+      }
+    ]
+  }
+}

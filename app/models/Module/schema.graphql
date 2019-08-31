@@ -1,0 +1,12 @@
+# import Course from '../Course/schema.graphql'
+# import Topic from '../Topic/schema.graphql'
+
+type Module {
+  id: ID!
+  name: String!
+  description: String
+  icon: String
+  coverImage: String
+  course: Course
+  topics: [Topic]
+}

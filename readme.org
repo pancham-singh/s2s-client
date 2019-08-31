@@ -1,0 +1,90 @@
+* Skill2Skills
+
+** Development
+
+*** Database Structure
+
+- =/migrations=
+
+  All the MySQL schema is kept here in migrations.
+
+- =/app/models=
+
+  Objection.js ORM is used to interact with database. Its models are kept in
+  =/app/models= directory. Each model directory has a =schema.graphql= file
+  representing the shape of the model to be used by GraphQL.
+
+
+Keep in mind the default Objection.js =eager= algorithm is in use. As the
+application goes in production, most used parts of the application must be
+identified and optimized with better tuning of join algorithm where it make
+sense.
+
+*** Bootstrapping
+
+Bootstrapping of application is done on startup to prefill database with
+required data. Most important aspect is creation of roles, permissions, and a
+default user.
+
+- =/app/bootstrap=
+
+  This directory contains code to fill database with default data.
+
+- =/.done-bootstrapping=
+
+  If this file exists, bootstrapping is not performed. In case you make any
+  changes to the bootstrapping code, e.g add new permissions or change
+  permissions/roles etc, remove this file and restart the application to have
+  the changes take effect.
+
+*** Graphql
+
+All graphql queries are kept in =/app/schema/=. Each subdirectory represent a
+query module, and contain a =schema.graphql= file representing all the possible
+queries, their input etc, and several typescript files for each query.
+
+** Deployment
+
+Docker is used to deploy and the application. Both locally or in production,
+docker must be used as it provides a consistent environment.
+
+Following must be installed on the system to run the application:
+
+- docker
+- docker-compose
+
+Once these are installed, execute following command in PWD:
+
+#+BEGIN_SRC sh
+docker-compose up
+#+END_SRC
+
+Docker image for the main app is created via =/Dockerfile=, while database and
+redis images are configured in =/docker-compose.yml= file.
+
+- *Porting out of docker*
+
+  It is very easy to move the application out of docker. Just install =redis= and
+  =mariadb= on the machine, and change URLs in =/app/config.ts= file. If redis and
+  mariadb and installed on the same machine as the application, you don't even
+  need to do that. Just starting the app with =yarn start= shall suffice.
+
+- *Production deployment*
+
+  =docker-compose up= start a stdin listening process which might not be ideal
+  for production deployment. For deployment on production, execute
+  =docker-compose up -d=. To stop the application, run =docker-compose down=
+
+- Running a shell in docker image
+
+  Sometimes it is required to execute a shell in the running docker image, for
+  interacting with mysql for example. For that, following command can be used:
+
+  #+BEGIN_SRC sh
+  docker exec -it api_web_1 sh
+  #+END_SRC
+
+  =api_web_1= here is the name of docker image created. Pressing =[TAB]= twice
+  after =-it= shall provide a list of running docker images. Their names are
+  self-descriptive, e.g =api_web_1= for Graphql Web API, =api_db_1= for
+  database, =api_redis_1= for redis.

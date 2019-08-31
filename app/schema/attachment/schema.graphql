@@ -1,0 +1,24 @@
+# import Attachment, AttachmentType from '../../models/Attachment/schema.graphql'
+# import AttachmentType from '../../models/Attachment/schema.graphql'
+
+type Query {
+  attachments(question: ID, answer: ID, limit: Int, skip: Int): [Attachment]
+  attachment(id: ID!): Attachment
+}
+
+type Mutation {
+  createAttachment(
+    question: ID
+    answer: ID
+    url: String!
+    type: AttachmentType!
+  ): Attachment
+
+  updateAttachment(
+    id: ID!
+    url: String!
+    type: AttachmentType!
+  ): Attachment
+
+  deleteAttachment(id: ID!): Attachment
+}

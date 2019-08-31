@@ -1,0 +1,18 @@
+# import AssessmentAnswer from '../../models/AssessmentAnswer/schema.graphql'
+
+type Query {
+  assessmentAnswers(question: ID!, limit: Int, skip: Int): [AssessmentAnswer]
+  assessmentAnswer(id: ID): AssessmentAnswer
+}
+
+type Mutation {
+  createAssessmentAnswer(
+    question: ID!
+    body: String!
+    isCorrect: Boolean
+    id:ID!
+  ): AssessmentAnswer
+
+
+  deleteAssessmentAnswer(id: ID!): AssessmentAnswer
+}

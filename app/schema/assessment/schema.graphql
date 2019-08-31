@@ -1,0 +1,32 @@
+# import Assessment from '../../models/Assessment/schema.graphql'
+
+input AssessmentTopic {
+  topic: ID!
+  theoryCount: Int!
+  practicalCount: Int!
+}
+
+type Query {
+  assessments(limit: Int, skip: Int): [Assessment]
+  assessment(id: ID): Assessment
+}
+
+type Mutation {
+  createAssessment(
+    name: String
+    topics: [AssessmentTopic!]!
+    batch: ID!
+    durationMinutes: Int!
+    startDate: String!
+    endDate: String!
+  ): Assessment!
+
+  updateAssessment(
+    name: String
+    durationMinutes: Int!
+    startDate: String!
+    endDate: String!
+  ): Assessment!
+
+  deleteAssessment(id: ID!): Assessment
+}

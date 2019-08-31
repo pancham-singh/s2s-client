@@ -1,0 +1,25 @@
+# import TrainingCenter from '../../models/TrainingCenter/schema.graphql'
+
+type Query {
+  trainingCenters(pia: ID, incharge: ID, limit: Int, skip: Int): [TrainingCenter]
+  trainingCenter(id: ID): TrainingCenter
+}
+
+type Mutation {
+  createTrainingCenter(
+    name: String!
+    address: String
+    pia: ID!
+    incharge: ID
+  ): TrainingCenter
+
+  updateTrainingCenter(
+    id: ID!
+    name: String
+    address: String
+    pia: ID
+    incharge: ID
+  ): TrainingCenter
+
+  deleteTrainingCenter(id: ID!): TrainingCenter
+}

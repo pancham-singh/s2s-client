@@ -1,0 +1,31 @@
+# import Topic from '../../models/Topic/schema.graphql'
+
+type Query {
+  topics(module: ID!, limit: Int, skip: Int): [Topic]
+  topic(id: ID): Topic
+}
+
+type Mutation {
+  createTopic(
+    name: String!
+    description: String!
+    module: ID!
+    icon: String
+    coverImage: String
+    pointsPractical: Int
+    pointsTheory: Int
+  ): Topic
+
+  updateTopic(
+    id: ID!
+    name: String
+    description: String
+    module: ID
+    icon: String
+    coverImage: String
+    pointsPractical: Int
+    pointsTheory: Int
+  ): Topic
+
+  deleteTopic(id: ID!): Topic
+}

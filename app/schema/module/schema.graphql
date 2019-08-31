@@ -1,0 +1,27 @@
+# import Module from '../../models/Module/schema.graphql'
+
+type Query {
+  modules(course: ID!, limit: Int, skip: Int): [Module]
+  module(id: ID): Module
+}
+
+type Mutation {
+  createModule(
+    name: String!
+    description: String!
+    course: ID!
+    icon: String
+    coverImage: String
+  ): Module
+
+  updateModule(
+    id: ID!
+    name: String
+    description: String
+    course: ID
+    icon: String
+    coverImage: String
+  ): Module
+
+  deleteModule(id: ID!): Module
+}

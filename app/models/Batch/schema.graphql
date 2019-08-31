@@ -1,0 +1,15 @@
+# import User from '../User/schema.graphql'
+# import Course from '../Course/schema.graphql'
+# import TrainingCenter from '../TrainingCenter/schema.graphql'
+
+type Batch {
+  id: ID!
+  name: String!
+  startDate: String!
+  endDate: String!
+  trainingCenter: TrainingCenter!
+  course: Course!
+  users: [User]
+  updatedAt: String
+  deletedAt: String
+}

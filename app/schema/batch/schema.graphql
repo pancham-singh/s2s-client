@@ -1,0 +1,27 @@
+# import Batch from '../../models/Batch/schema.graphql'
+
+type Query {
+  batches(limit: Int, skip: Int): [Batch]
+  batch(id: ID): Batch
+}
+
+type Mutation {
+  createBatch(
+    name: String!
+    startDate: String!
+    endDate: String!
+    trainingCenter: ID!
+    course: ID!
+  ): Batch
+
+  updateBatch(
+    id: ID!
+    name: String
+    startDate: String
+    endDate: String
+    trainingCenter: ID
+    course: ID
+  ): Batch
+
+  deleteBatch(id: ID!): Batch
+}

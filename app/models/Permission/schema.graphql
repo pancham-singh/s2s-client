@@ -1,0 +1,7 @@
+type Permission {
+  id: ID!
+  name: String!
+  description: String!
+  createdAt: String!
+  updatedAt: String!
+}

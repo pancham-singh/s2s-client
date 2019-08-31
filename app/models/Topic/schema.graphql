@@ -1,0 +1,14 @@
+# import Module from '../Module/schema.graphql'
+# import Question from '../Question/schema.graphql'
+
+type Topic {
+  id: ID!
+  name: String!
+  description: String
+  icon: String
+  coverImage: String
+  pointsPractical: Int
+  pointsTheory: Int
+  module: Module
+  questions: [Question]
+}

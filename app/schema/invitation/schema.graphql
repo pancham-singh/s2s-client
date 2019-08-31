@@ -1,0 +1,15 @@
+# import Invitation from '../../models/Invitation/schema.graphql'
+# import InvitedAs from '../../models/Invitation/schema.graphql'
+# import AuthResponse from '../auth/schema.graphql'
+
+type Query {
+  invitations(limit: Int, skip: Int): [Invitation]
+  invitation(id: ID, token: String, invitedEmail: String): Invitation
+  invitationForToken(token: String!): Invitation
+}
+
+type Mutation {
+  createInvitation(invitedEmail: String!, invitedAs: InvitedAs!, validTill: String, trainingCenter: ID!, batch: ID): Invitation
+  deleteInvitation(id: ID!): Invitation
+  acceptInvitation(token: String!): AuthResponse
+}

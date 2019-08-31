@@ -1,0 +1,10 @@
+# import Question from '../Question/schema.graphql'
+# import Attachment from '../Attachment/schema.graphql'
+
+type AssessmentAnswer {
+  answerId: ID!
+  body: String
+  isCorrect:Boolean!
+  question:Question!
+  attachments: [Attachment!]
+}
